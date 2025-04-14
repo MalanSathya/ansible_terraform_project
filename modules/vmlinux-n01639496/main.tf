@@ -49,9 +49,9 @@ resource "azurerm_linux_virtual_machine" "vm" {
   }
 
   source_image_reference {
-    publisher = "OpenLogic"
-    offer     = "CentOS"
-    sku       = "8_2"
+    publisher = "Canonical"
+    offer     = "UbuntuServer"
+    sku       = "18.04-DAILY-LTS"
     version   = "latest"
   }
 

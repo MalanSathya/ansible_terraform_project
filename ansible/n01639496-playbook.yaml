@@ -1,0 +1,15 @@
+---
+- name: Configure Linux VMs
+  hosts: linux_vms
+  become: true
+  vars:
+    users:
+      - user100
+      - user200
+      - user300
+
+  roles:
+    - profile-n01639496
+    - user-n01639496
+    - datadisk-n01639496
+    - webserver-n01639496

@@ -36,14 +36,5 @@ variable "windows_vm_count" {
 
 variable "tags" {
   type = map(string)
-<<<<<<< HEAD
-  default = {
-    Assignment     = "CCGC 5502 Automation Assignment"
-    Name          = "Malan.VenkatesanSathyanaarayan"
-    ExpirationDate = "2024-12-31"
-    Environment    = "Learning"
-  }
-=======
->>>>>>> e2d0e75 (Optimized)
 }
 

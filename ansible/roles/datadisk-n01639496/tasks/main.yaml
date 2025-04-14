@@ -1,0 +1,56 @@
+---
+- name: Install required packages
+  package:
+    name:
+      - parted
+      - xfsprogs
+    state: present
+
+- name: Create partition 1 (4GB)
+  parted:
+    device: /dev/sdc
+    number: 1
+    state: present
+    part_start: 0%
+    part_end: 4GB
+
+- name: Create partition 2 (remaining space)
+  parted:
+    device: /dev/sdc
+    number: 2
+    state: present
+    part_start: 4GB
+    part_end: 100%
+
+- name: Format partition 1 with XFS
+  filesystem:
+    fstype: xfs
+    dev: /dev/sdc1
+
+- name: Format partition 2 with EXT4
+  filesystem:
+    fstype: ext4
+    dev: /dev/sdc2
+
+- name: Create mount point directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: '0755'
+  loop:
+    - /part1
+    - /part2
+
+- name: Mount partition 1 on /part1
+  mount:
+    path: /part1
+    src: /dev/sdc1
+    fstype: xfs
+    state: mounted
+
+- name: Mount partition 2 on /part2
+  mount:
+    path: /part2
+    src: /dev/sdc2
+    fstype: ext4
+    state: mounted

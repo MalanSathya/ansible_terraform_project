@@ -30,23 +30,19 @@ variable "ssh_public_key_path" {
 
 variable "linux_vm_count" {
   type    = number
-  default = 2
+  default = 1
 }
 
 variable "windows_vm_count" {
   type    = number
-  default = 1
+  default = 0
 }
 
 variable "common_tags" {
   type = map(string)
   default = {
     Assignment     = "CCGC 5502 Automation Assignment"
-<<<<<<< HEAD
-    Name           = "Malan.VenkatesanSathyanaarayan"
-=======
     Name           = "Malan Venkatesan Sathyanaarayan"
->>>>>>> e2d0e75 (Optimized)
     ExpirationDate = "2024-12-31"
     Environment    = "Learning"
   }
