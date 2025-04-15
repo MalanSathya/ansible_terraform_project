@@ -22,6 +22,8 @@
 - name: Fetch user100 private key
   fetch:
     src: "/home/user100/.ssh/id_rsa"
-    dest: "./user100_key"
+    dest: "~/.ssh/user100_key"
     flat: yes
+    mode: '0600'
+  become: yes
   when: inventory_hostname == groups['linux_vms'][0]

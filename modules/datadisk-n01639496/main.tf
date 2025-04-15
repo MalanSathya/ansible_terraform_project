@@ -7,6 +7,7 @@ resource "azurerm_managed_disk" "datadisk" {
   storage_account_type = "Standard_LRS"
   create_option        = "Empty"
   disk_size_gb         = 10
+  tags                 = var.tags
 }
 
 resource "azurerm_virtual_machine_data_disk_attachment" "datadisk_attachment" {

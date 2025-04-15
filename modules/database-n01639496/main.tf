@@ -1,6 +1,6 @@
 
 resource "azurerm_postgresql_server" "db_instance" {
-  name                = "n01639496-db"
+  name                = "${var.humber_id}-db"
   location            = var.location
   resource_group_name = var.resource_group_name
   sku_name            = "B_Gen5_1"

@@ -1,7 +1,7 @@
 ---
 - name: Install Apache
   package:
-    name: apache
+    name: apache2
     state: present
 
 - name: Create and deploy index.html directly on each VM
@@ -9,13 +9,10 @@
     content: "{{ fqdn }}"
     dest: /var/www/html/index.html
     mode: '0444'
-  notify: restart apache
+  notify: restart apache2
 
 - name: Ensure Apache is enabled and started
   service:
-    name: httpd
+    name: apache2
     state: started
     enabled: yes
-
-- name: handlers
-  import_tasks: handlers.yaml

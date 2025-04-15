@@ -6,6 +6,7 @@ resource "azurerm_availability_set" "avset" {
   platform_fault_domain_count = 2
   platform_update_domain_count = 5
   managed             = true
+  tags = var.tags
 }
 
 resource "azurerm_network_interface" "nic" {
@@ -13,6 +14,7 @@ resource "azurerm_network_interface" "nic" {
   name                = "${var.humber_id}-w-vm${count.index + 1}-nic"
   location            = var.location
   resource_group_name = var.resource_group_name
+  tags = var.tags
 
   ip_configuration {
     name                          = "${var.humber_id}-w-vm${count.index + 1}-ipconfig"
@@ -59,6 +61,7 @@ resource "azurerm_virtual_machine_extension" "antimalware" {
   type                      = "IaaSAntimalware"
   type_handler_version      = "1.5"
   auto_upgrade_minor_version = true
+  tags = var.tags
 
   settings = <<SETTINGS
 {

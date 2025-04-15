@@ -6,6 +6,7 @@ resource "azurerm_availability_set" "avset" {
   platform_fault_domain_count = 2
   platform_update_domain_count = 5
   managed             = true
+  tags = var.tags
 }
 
 resource "azurerm_public_ip" "linux_pip" {
@@ -23,6 +24,7 @@ resource "azurerm_network_interface" "nic" {
   name                = "${var.humber_id}-c-vm${each.value}-nic"
   location            = var.location
   resource_group_name = var.resource_group_name
+  tags = var.tags
 
   ip_configuration {
     name                          = "${var.humber_id}-c-vm${each.value}-ipconfig"
@@ -74,6 +76,7 @@ resource "azurerm_virtual_machine_extension" "network_watcher" {
   type                       = "NetworkWatcherAgentLinux"
   type_handler_version       = "1.4"
   auto_upgrade_minor_version = true
+  tags = var.tags
 }
 
 resource "azurerm_virtual_machine_extension" "azure_monitor" {
@@ -84,5 +87,6 @@ resource "azurerm_virtual_machine_extension" "azure_monitor" {
   type                       = "AzureMonitorLinuxAgent"
   type_handler_version       = "1.0"
   auto_upgrade_minor_version = true
+  tags = var.tags
 }
 

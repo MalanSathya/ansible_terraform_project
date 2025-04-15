@@ -17,13 +17,11 @@ variable "location" {
   default = "Canada Central"
 }
 
+variable "humber_id" {
+  type = string
+}
+
 variable "tags" {
   type = map(string)
-  default = {
-    Assignment     = "CCGC 5502 Automation Assignment"
-    Name          = "Malan.VenkatesanSathyanaarayan"
-    ExpirationDate = "2024-12-31"
-    Environment    = "Learning"
-  }
 }
 
